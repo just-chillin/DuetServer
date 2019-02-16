@@ -1,4 +1,10 @@
+import spark.Spark;
+
 public class DuetServerApplication {
+    private static String onRecieveSignup() {
+        return
+    }
+
     public DuetServerApplication() {
 
     }
