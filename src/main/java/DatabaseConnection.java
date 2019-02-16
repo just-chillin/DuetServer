@@ -6,8 +6,12 @@ public class DatabaseConnection {
      * First Name - Last Name - Username - School
      */
     private static void test() {
-        BigchainDbConfigBuilder.baseUrl("duetdating.net").
-                addToken("First Name", )
+        //BigchainDbConfigBuilder.baseUrl("duetdating.net")
+                //addToken("First Name", )
+
+    }
+
+    private void addUser(User user) {
 
     }
 
@@ -15,6 +19,6 @@ public class DatabaseConnection {
      * @return FirstName
      */
     private static String getFirst(){
-
+        return null;
     }
 }
