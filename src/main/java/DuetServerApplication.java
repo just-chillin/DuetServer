@@ -1,3 +1,4 @@
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import spark.Request;
 import spark.Response;
@@ -5,6 +6,12 @@ import spark.Spark;
 
 public class DuetServerApplication {
     public static final MongoDBConnector dbConnection = MongoDBConnector.connect();
+
+    private static JsonObject getJsonObjectFromRequest(Request request) {
+        var body = request.body();
+        var jsonParser = new JsonParser();
+        return jsonParser.parse(body).getAsJsonObject();
+    }
 
     /**
      * Handles the POST signup
@@ -14,9 +21,7 @@ public class DuetServerApplication {
      * @return An API key
      */
     private Object onRecievePOSTSignup(Request request, Response response) {
-        var body = request.body();
-        var jsonParser = new JsonParser();
-        var jsonObject = jsonParser.parse(body).getAsJsonObject();
+        var jsonObject = getJsonObjectFromRequest(request);
         var username = jsonObject.get("username").getAsString();
         var password = jsonObject.get("password").getAsString();
         var fname = jsonObject.get("fname").getAsString();
