@@ -16,7 +16,7 @@ public class User implements DatabaseObject {
     private Survey survey;
     private String apiKey;
 
-    public JsonObject getPubliclyAvaliableSeralizedUser() {
+    public JsonObject getPubliclyAvailableSerializedUser() {
         //JsonSerializer
         return null;
     }
