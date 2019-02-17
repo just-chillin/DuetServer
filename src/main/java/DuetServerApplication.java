@@ -19,8 +19,10 @@ public class DuetServerApplication {
         var jsonObject = jsonParser.parse(body).getAsJsonObject();
         var username = jsonObject.get("username").getAsString();
         var password = jsonObject.get("password").getAsString();
-        var survery = Survey.fromJsonObject(jsonObject.getAsJsonObject("survey"));
-        var user = User.createUser(username, password, survery);
+        var fname = jsonObject.get("fname").getAsString();
+        var lname = jsonObject.get("lname").getAsString();
+        var survey = Survey.fromJsonObject(jsonObject.getAsJsonObject("survey"));
+        var user = User.createUser(username, password, survey, fname, lname);
         return user.getApiKey();
     }
 
