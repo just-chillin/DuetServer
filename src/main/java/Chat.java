@@ -5,6 +5,7 @@ public class Chat implements DatabaseObject {
     private List<String> history;
     private User user1;
     private User user2;
+    private static final MongoDBConnector dbConnection = MongoDBConnector.connect();
 
     public List<String> getHistory() {
         update();
@@ -12,8 +13,8 @@ public class Chat implements DatabaseObject {
     }
 
     @Override
-    public void update() {
-
+    public void update(String senderInput) {
+        Chat.dbConnection.getChatCollection().insertOne();
     }
 
     @Override
