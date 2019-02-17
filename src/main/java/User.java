@@ -1,7 +1,11 @@
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializer;
 import com.mongodb.client.MongoCollection;
+import org.bson.BsonDocument;
 
+
+import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Projections.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -31,6 +35,7 @@ public class User implements DatabaseObject {
     }
 
     public void sendMessageTo(User user) {
+
     }
 
     public static User queryFromAPIToken(String token) {
@@ -70,6 +75,6 @@ public class User implements DatabaseObject {
 
     @Override
     public void update() {
-
+        User user = userCollection.find(eq("id", id)).first();
     }
 }
