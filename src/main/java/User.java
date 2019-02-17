@@ -1,4 +1,5 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializer;
 import com.mongodb.client.MongoCollection;
 import org.bson.BsonDocument;
@@ -18,19 +19,25 @@ public class User implements DatabaseObject {
     private static final MongoCollection<User> userCollection = DuetServerApplication.dbConnection.getUserCollection();
     private ArrayList<Chat> chats = new ArrayList<>();
     private UUID id = UUID.randomUUID();
+    private String firstName;
+    private String lastName;
     private Survey survey;
     private String apiKey;
 
     public JsonObject getPubliclyAvailableSerializedUser() {
-        //JsonSerializer
-        return null;
+        var json = new JsonObject();
+        json.add("id", new JsonPrimitive(id.toString()));
+        json.add("firstName", new JsonPrimitive(firstName));
+        json.add("lastName", new JsonPrimitive(lastName));
+        json.add("survey", survey.serializeToJson());
+        return json;
     }
 
-    public String getApiKey() {
+    String getApiKey() {
         return apiKey;
     }
 
-    private User(String apiKey, Survey survey) {
+    private User(String apiKey, Survey survey, String firstName, String lastName) {
         this.survey = survey;
         this.apiKey = apiKey;
     }
@@ -55,9 +62,10 @@ public class User implements DatabaseObject {
 
     }
 
-    public static User createUser(String username, String password, Survey userSurvey) {
+    public static User createUser(String username, String password, Survey userSurvey, String firstName,
+                                  String lastName) {
         var apiKey = createAPIKey(username, password);
-        var user = new User(apiKey, userSurvey);
+        var user = new User(apiKey, userSurvey, firstName, lastName);
         user.save();
         return user;
     }
