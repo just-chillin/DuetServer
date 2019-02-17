@@ -4,6 +4,8 @@ import spark.Request;
 import spark.Response;
 import spark.Spark;
 
+import static com.mongodb.client.model.Projections.*;
+
 public class DuetServerApplication {
     public static final MongoDBConnector dbConnection = MongoDBConnector.connect();
 
@@ -32,7 +34,8 @@ public class DuetServerApplication {
     }
 
     private Object onRecieveGETCards(Request request, Response response) {
-        return null;
+//        User.userCollection.find().projection(fields(include(),exclude()));
+        return User.userCollection.find().projection(fields(exclude(request.body())));
     }
 
     private Object onRecievePOSTChatMessage(Request request, Response response) {
