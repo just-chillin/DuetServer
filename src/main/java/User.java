@@ -40,6 +40,8 @@ public class User implements DatabaseObject {
     private User(String apiKey, Survey survey, String firstName, String lastName) {
         this.survey = survey;
         this.apiKey = apiKey;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public void sendMessageTo(User user) {
