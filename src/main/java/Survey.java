@@ -6,7 +6,8 @@ public class Survey {
 
     }
 
-    public Survey fromJson(Json json) {
+    public static Survey fromJson(Json json) {
+
         return null;
     }
 }

@@ -1,16 +1,27 @@
 import java.util.List;
 
-public class Chat {
+public class Chat implements DatabaseObject {
 
     private List<String> history;
     private User user1;
     private User user2;
 
-    static Chat getChat(User user) {
-        return null;
+    public List<String> getHistory() {
+        update();
+        return history;
     }
 
-    public List<String> getHistory() {
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void save() {
+
+    }
+
+    public static Chat getChat(User user) {
         return null;
     }
 }
