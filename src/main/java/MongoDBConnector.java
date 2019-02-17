@@ -15,6 +15,14 @@ public class MongoDBConnector {
         this.chatCollection = chatCollection;
     }
 
+    public MongoCollection<User> getUserCollection() {
+        return userCollection;
+    }
+
+    public MongoCollection<Chat> getChatCollection() {
+        return chatCollection;
+    }
+
     public static MongoDBConnector connect() {
         var connectionString = new ConnectionString("mongodb://admin:password@localhost:27017");
         var mongoClient = MongoClients.create(connectionString);
