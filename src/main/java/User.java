@@ -57,8 +57,9 @@ public class User implements DatabaseObject {
 
     public static User createUser(String username, String password, Survey userSurvey) {
         var apiKey = createAPIKey(username, password);
-        // TODO: Create user in database here
-        return new User(apiKey, userSurvey);
+        var user = new User(apiKey, userSurvey);
+        user.save();
+        return user;
     }
 
 
