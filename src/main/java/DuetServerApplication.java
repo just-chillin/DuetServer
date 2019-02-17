@@ -11,7 +11,11 @@ public class DuetServerApplication {
         return null;
     }
 
-    private Object onRecievePOSTVote(Request request, Response response) {
+    private Object onRecievePOSTChatMessage(Request request, Response response) {
+        return null;
+    }
+
+    private Object onGETChatMessages(Request request, Response response) {
         return null;
     }
 
@@ -21,7 +25,7 @@ public class DuetServerApplication {
         System.out.println("Creating get cards route");
         Spark.get("/cards", this::onRecieveGETCards);
         System.out.println("Creating vote route");
-        Spark.post("/vote", this::onRecievePOSTVote);
+//        Spark.post("/vote", this::onRecievePOSTVote);
     }
 
     public static void main(String[] args) {

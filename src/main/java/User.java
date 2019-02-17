@@ -1,14 +1,29 @@
+import java.util.List;
+
 public class User {
 
-    private User(){
-        String firstName;
-        String lastName;
-        String userName;
-        String school;
+    private List<Chat> chats;
+    private int id;
+    private Survey survey;
+
+    public void sendMessageTo(User user) {
+
     }
 
+    public void update() {
 
-    // create user upload to db return user
+    }
 
-    //
+    public User queryFromAPIToken(String token) {
+        return null;
+    }
+
+    public List<Chat> getChats() {
+        return null;
+    }
+
+    public void save() {
+
+    }
+
 }

@@ -1,20 +1,21 @@
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
 
+import java.util.List;
+
 public class DatabaseConnection {
 
     /*
      * First Name - Last Name - Username - School
      */
-    private static void test() {
-        BigchainDbConfigBuilder.baseUrl("duetdating.net").
-                addToken("First Name", )
+    public void insertUser() {
 
     }
 
-    /**
-     * @return FirstName
-     */
-    private static String getFirst(){
+    public User getUser(){
+        return null;
+    }
 
+    public List<User> queryUsers() {
+        return null;
     }
 }
