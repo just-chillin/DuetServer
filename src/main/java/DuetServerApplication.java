@@ -1,17 +1,15 @@
-import com.google.api.client.json.Json;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mongodb.client.MongoClient;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
 
 public class DuetServerApplication {
-//    public static final MongoClient db = new MongoClient("localhost");
+    public static final MongoDBConnector dbConnection = MongoDBConnector.connect();
 
     /**
      * Handles the POST signup
-     * @param request The request from the user
+     *
+     * @param request  The request from the user
      * @param response The response to send to the user
      * @return An API key
      */
@@ -19,7 +17,11 @@ public class DuetServerApplication {
         var body = request.body();
         var jsonParser = new JsonParser();
         var jsonObject = jsonParser.parse(body).getAsJsonObject();
-        return null;
+        var username = jsonObject.get("username").getAsString();
+        var password = jsonObject.get("password").getAsString();
+        var survery = Survey.fromJsonObject(jsonObject.getAsJsonObject("survey"));
+        var user = User.createUser(username, password, survery);
+        return user.getApiKey();
     }
 
     private Object onRecieveGETCards(Request request, Response response) {
@@ -40,10 +42,10 @@ public class DuetServerApplication {
         System.out.println("Creating get cards route");
         Spark.get("/cards", this::onRecieveGETCards);
         System.out.println("Creating vote route");
-//        Spark.post("/vote", this::onRecievePOSTVote);
+//        Spark.post("/vote", this::onReceivePOSTVote);
     }
 
     public static void main(String[] args) {
-
+        new DuetServerApplication();
     }
 }

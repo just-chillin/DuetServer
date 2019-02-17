@@ -1,3 +1,7 @@
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializer;
+import org.bson.Document;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -11,13 +15,21 @@ public class User implements DatabaseObject {
     private Survey survey;
     private String apiKey;
 
+    public JsonObject getPubliclyAvaliableSeralizedUser() {
+        //JsonSerializer
+        return null;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
     private User(String apiKey, Survey survey) {
         this.survey = survey;
         this.apiKey = apiKey;
     }
 
     public void sendMessageTo(User user) {
-
     }
 
     public static User queryFromAPIToken(String token) {
