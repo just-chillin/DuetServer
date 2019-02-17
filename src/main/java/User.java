@@ -13,8 +13,8 @@ import java.util.UUID;
 import static java.util.Base64.getEncoder;
 
 public class User implements DatabaseObject {
-    private static final MongoCollection<User> userCollection = DuetServerApplication.dbConnection.getUserCollection();
 
+    private static final MongoCollection<User> userCollection = DuetServerApplication.dbConnection.getUserCollection();
     private ArrayList<Chat> chats = new ArrayList<>();
     private UUID id = UUID.randomUUID();
     private Survey survey;
