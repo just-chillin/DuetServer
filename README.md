@@ -1,3 +1,3 @@
 # DuetServer
 ------------------
-We servin this boys
+We servin this
